@@ -6,4 +6,7 @@ return [
     'title' => 'Jigsaw',
     'description' => 'Website description.',
     'collections' => [],
+    'build' => [
+        'destination' => 'public',
+    ],
 ];
