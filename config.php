@@ -5,7 +5,11 @@ return [
     'baseUrl' => '/public',
     'title' => 'Jigsaw',
     'description' => 'Website description.',
-    'collections' => [],
+    'collections' => [
+        'posts' => [
+            'path' => 'blog/{date|Y-m-d}/{filename}',
+        ],
+    ],
     'build' => [
         'destination' => 'public',
     ],
