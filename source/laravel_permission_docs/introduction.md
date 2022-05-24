@@ -1,5 +1,10 @@
 ---
+extends: _layouts.blog
+section: body
 title: 序章
+tags: 初学者向け
+author: https://spatie.be/
+slide: false
 weight: 1
 ---
 
