@@ -68,9 +68,9 @@ $permission->removeRole($role);
 
 The `HasRoles` trait adds Eloquent relationships to your models, which can be accessed directly or used as a base query: -->
 
-複数のガードを使用している場合は、`guard_name` 属性も設定する必要があります。`readme` の[「複数のガードの使用」](./multiple-guards) セクションでそれについて読んでください。
+複数のガードを使用している場合は、`guard_name` 属性も設定する必要があります。`readme` の [複数のガードの使用](./multiple-guards) セクションでそれについて読んでください。
 
-`HasRoles トレイト` は、モデルに Eloquent のリレーションを追加します。このトレイトにより、リレーション先に直接アクセスすることも、基本クエリとして使用することもできます。
+`HasRoles` トレイト は、モデルに Eloquent のリレーションを追加します。このトレイトにより、リレーション先に直接アクセスすることも、基本クエリとして使用することもできます。
 
 ```php
 // get a list of all permissions directly assigned to the user
@@ -88,7 +88,7 @@ $roles = $user->getRoleNames(); // Returns a collection
 
 <!-- The `HasRoles` trait also adds a `role` scope to your models to scope the query to certain roles or permissions: -->
 
-この `HasRolesトレイト`は `role` スコープをモデルに追加することで、特定の役割または権限に絞ったクエリを発行できます。
+この `HasRoles`トレイトは `role` スコープをモデルに追加することで、特定の役割または権限に絞ったクエリを発行できます。
 
 ```php
 $users = User::role('writer')->get(); // Returns only users with the role 'writer'

@@ -1,9 +1,11 @@
 ---
-title: Direct Permissions
+title: 直接アクセス許可
 weight: 2
 ---
 
 A permission can be given to any user:
+
+すべてのユーザーに許可を与えることができます。
 
 ```php
 $user->givePermissionTo('edit articles');
@@ -17,11 +19,15 @@ $user->givePermissionTo(['edit articles', 'delete articles']);
 
 A permission can be revoked from a user:
 
+ユーザーから権限を取り消すことができます。
+
 ```php
 $user->revokePermissionTo('edit articles');
 ```
 
 Or revoke & add new permissions in one go:
+
+または、一度に取り消して新しい権限を追加します。
 
 ```php
 $user->syncPermissions(['edit articles', 'delete articles']);
@@ -29,11 +35,15 @@ $user->syncPermissions(['edit articles', 'delete articles']);
 
 You can check if a user has a permission:
 
+ユーザーに権限があるかどうかを確認できます。
+
 ```php
 $user->hasPermissionTo('edit articles');
 ```
 
 Or you may pass an integer representing the permission id
+
+または、パーミッションIDを表す整数を渡すこともできます
 
 ```php
 $user->hasPermissionTo('1');
@@ -43,11 +53,15 @@ $user->hasPermissionTo($somePermission->id);
 
 You can check if a user has Any of an array of permissions:
 
+ユーザーが一連の権限のいずれかを持っているかどうかを確認できます。
+
 ```php
 $user->hasAnyPermission(['edit articles', 'publish articles', 'unpublish articles']);
 ```
 
 ...or if a user has All of an array of permissions:
+
+...または、ユーザーがすべての権限を持っている場合：
 
 ```php
 $user->hasAllPermissions(['edit articles', 'publish articles', 'unpublish articles']);
@@ -55,12 +69,16 @@ $user->hasAllPermissions(['edit articles', 'publish articles', 'unpublish articl
 
 You may also pass integers to lookup by permission id
 
+パーミッションIDでルックアップに整数を渡すこともできます
+
 ```php
 $user->hasAnyPermission(['edit articles', 1, 5]);
 ```
 
 Saved permissions will be registered with the `Illuminate\Auth\Access\Gate` class for the default guard. So you can
 check if a user has a permission with Laravel's default `can` function:
+
+保存された権限はIlluminate\Auth\Access\Gate、デフォルトのガードのクラスに登録されます。したがって、ユーザーがLaravelのデフォルトcan機能で権限を持っているかどうかを確認できます。
 
 ```php
 $user->can('edit articles');
