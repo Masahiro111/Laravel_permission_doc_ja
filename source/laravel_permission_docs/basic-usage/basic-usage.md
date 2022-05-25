@@ -10,7 +10,7 @@ weight: 1
 
 <!-- First, add the `Spatie\Permission\Traits\HasRoles` trait to your `User` model(s): -->
 
-まず、User モデルに `Spatie\Permission\Traits\HasRoles` 特性を追加します。
+まず、User モデルに `Spatie\Permission\Traits\HasRoles` トレイトを追加します。
 
 ```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,7 +27,7 @@ class User extends Authenticatable
 <!-- This package allows for users to be associated with permissions and roles. Every role is associated with multiple permissions.
 A `Role` and a `Permission` are regular Eloquent models. They require a `name` and can be created like this: -->
 
-このパッケージを使用すると、ユーザーを権限(Permissions)と役割(Roles)に関連付けることができます。すべての役割(Role)は複数の権限(Permissions)に関連付けられています。`Role`と `Permission` は通常の Eloquent モデルです。それらは `name` を必要とし、以下のように 役割、もしくは権限 を作成することができます。
+このパッケージを使用すると、ユーザーを権限(Permissions)と役割(Roles)に関連付けることができます。すべての役割(Role)は複数の権限(Permissions)に関連付けられています。`Role`と `Permission` は通常の Eloquent モデルです。それらは `name` を必要とし、以下のようにして 役割(Role)、もしくは権限(Permission) を作成することができます。
 
 ```php
 use Spatie\Permission\Models\Role;
@@ -98,23 +98,24 @@ $users = User::role('writer')->get(); // Returns only users with the role 'write
 
 The same trait also adds a scope to only get users that have a certain permission. -->
 
-スコープは、文字列、オブジェクト、またはオブジェクトroleを受け入れることができます。\Spatie\Permission\Models\Role\Illuminate\Support\Collection
+`Role` のスコープは、文字列、`\Spatie\Permission\Models\Role` オブジェクト、及び`\Illuminate\Support\Collection` オブジェクトを受け入れることができます。
 
-同じ特性により、特定の権限を持つユーザーのみを取得するスコープも追加されます。
+また、このトレイトにより特定の権限(Permission) を持つユーザーのみを取得するスコープも追加されます。
 
 ```php
-$users = User::permission('edit articles')->get(); // Returns only users with the permission 'edit articles' (inherited or directly)
+ // Returns only users with the permission 'edit articles' (inherited or directly)
+$users = User::permission('edit articles')->get();
 ```
 
 <!-- The scope can accept a string, a `\Spatie\Permission\Models\Permission` object or an `\Illuminate\Support\Collection` object. -->
 
-\Spatie\Permission\Models\Permissionスコープは、文字列、オブジェクト、またはオブジェクトを受け入れることができ\Illuminate\Support\Collectionます。
+スコープは、文字列、`\Spatie\Permission\Models\Permission`オブジェクト、及び`\Illuminate\Support\Collection`オブジェクトを受け入れることができます。
 
 ### Eloquent
 
 <!-- Since Role and Permission models are extended from Eloquent models, basic Eloquent calls can be used as well: -->
 
-ロールモデルとパーミッションモデルはEloquentモデルから拡張されているため、基本的な Eloquent 呼び出しもできます。
+Role モデルと Permission モデルは Eloquent モデルから拡張されているため、基本的な Eloquent 呼び出しもできます。
 
 ```php
 $all_users_with_all_their_roles = User::with('roles')->get();
