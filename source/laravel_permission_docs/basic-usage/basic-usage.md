@@ -2,7 +2,6 @@
 extends: _layouts.blog
 section: body
 title: 基本的な使用法
-tags: 初学者向け
 author: https://spatie.be/
 slide: false
 weight: 1
