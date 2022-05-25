@@ -89,10 +89,10 @@ $user->can('posts.delete');
 
 ### サブパーツ
 
-Besides the use of parts and wildcards, subparts can also be used. Subparts are divided with commas (,). This is a
-powerful feature that lets you create complex permission schemes.
+<!-- Besides the use of parts and wildcards, subparts can also be used. Subparts are divided with commas (,). This is a
+powerful feature that lets you create complex permission schemes. -->
 
-パーツとワイルドカードの使用に加えて、サブパーツも使用できます。サブパートはコンマ（、）で区切られます。これは、複雑な権限スキームを作成できる強力な機能です。
+パーツとワイルドカードの使用に加えて、サブパーツも使用できます。サブパートはコンマ（ `,` ）で区切られます。これは、複雑な権限スキームを作成できる強力な機能です。
 
 ```php
 // user can only do the actions create, update and view on both resources posts and users
@@ -105,6 +105,6 @@ $user->givePermissionTo('*.create,update,view');
 $user->givePermissionTo('posts.*.1,4,6');
 ```
 
-> As said before, the meaning of each part is determined by the application layer! So, you are free to use each part as you like. And you can use as many parts and subparts as you want.
+<!-- > As said before, the meaning of each part is determined by the application layer! So, you are free to use each part as you like. And you can use as many parts and subparts as you want. -->
 
-前に述べたように、各部分の意味はアプリケーション層によって決定されます！だから、あなたは好きなように各部分を自由に使うことができます。また、必要な数のパーツとサブパーツを使用できます。
+> 前に述べたように、各部分の意味はアプリケーション層によって決定されます！だから、あなたは好きなように各部分を自由に使うことができます。また、必要な数のパーツとサブパーツを使用できます。
