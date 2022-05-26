@@ -1,5 +1,5 @@
 ---
-title: Teams permissions
+title: チームの権限
 weight: 3
 ---
 
@@ -7,8 +7,13 @@ NOTE: Those changes must be made before performing the migration. If you have al
 
 When enabled, teams permissions offers you a flexible control for a variety of scenarios. The idea behind teams permissions is inspired by the default permission implementation of [Laratrust](https://laratrust.santigarcor.me/).
 
-
 Teams permissions can be enabled in the permission config file:
+
+注：これらの変更は、移行を実行する前に行う必要があります。すでに移行を実行していて、ソリューションをアップグレードする場合は、artisan consoleコマンドを実行して、 xxx​​x_xx_xx_xx_add_teams_fields.phpphp artisan permission:setup-teamsという名前の新しい移行ファイルを作成してから、実行してデータベーステーブルをアップグレードできます。php artisan migrate
+
+有効にすると、チームの権限により、さまざまなシナリオを柔軟に制御できます。チームのアクセス許可の背後にある考え方は、 Laratrustのデフォルトのアクセス許可の実装に触発されています。
+
+チームの権限は、権限設定ファイルで有効にできます。
 
 ```php
 // config/permission.php
@@ -16,15 +21,20 @@ Teams permissions can be enabled in the permission config file:
 ```
 
 Also, if you want to use a custom foreign key for teams you must change in the permission config file:
+
+また、チームにカスタム外部キーを使用する場合は、権限構成ファイルを変更する必要があります。
+
 ```php
 // config/permission.php
 'team_foreign_key' => 'custom_team_id',
 ```
 
-## Working with Teams Permissions
+## チームのアクセス許可の操作
 
-After implements on login a solution for select a team on authentication (for example set `team_id` of the current selected team on **session**: `session(['team_id' => $team->team_id]);` ), 
+After implements on login a solution for select a team on authentication (for example set `team_id` of the current selected team on **session**: `session(['team_id' => $team->team_id]);` ),
 we can set global `team_id` from anywhere, but works better if you create a `Middleware`, example:
+
+ログイン時に認証でチームを選択するためのソリューション（たとえば、セッションteam_idで現在選択されているチームのセット:)を実装した後、どこからでもグローバルに設定できますが、次の例を作成すると、より適切に機能します。session(['team_id' => $team->team_id]);team_idMiddleware
 
 ```php
 namespace App\Http\Middleware;
@@ -46,12 +56,17 @@ class TeamsPermission{
     }
 }
 ```
+
 NOTE: You must add your custom `Middleware` to `$middlewarePriority` on `app/Http/Kernel.php`.
- 
-## Roles Creating
+
+Middleware注：カスタムを$middlewarePriorityに追加する必要がありますapp/Http/Kernel.php。
+
+## 役割 (Role) の作成
 
 When creating a role you can pass the `team_id` as an optional parameter
- 
+
+team_idロールを作成するときに、オプションのパラメーターとしてを渡すことができます
+
 ```php
 // with null team_id it creates a global role, global roles can be assigned to any team and they are unique
 Role::create(['name' => 'writer', 'team_id' => null]);
@@ -63,13 +78,17 @@ Role::create(['name' => 'reader', 'team_id' => 1]);
 Role::create(['name' => 'reviewer']);
 ```
 
-## Roles/Permissions Assignment & Removal
+## 役割/権限の割り当てと削除
 
 The role/permission assignment and removal are the same, but they take the global `team_id` set on login for sync.
 
-## Defining a Super-Admin on Teams
+役割/権限の割り当てと削除は同じですが、team_id同期のためにログイン時にグローバルセットを使用します。
+
+## チームでのスーパー管理者の定義
 
 Global roles can be assigned to different teams, `team_id` as the primary key of the relationships is always required. If you want a "Super Admin" global role for a user, when you creates a new team you must assign it to your user. Example:
+
+team_id関係の主キーは常に必要であるため、グローバルな役割をさまざまなチームに割り当てることができます。ユーザーに「スーパー管理者」グローバルロールが必要な場合は、新しいチームを作成するときに、それをユーザーに割り当てる必要があります。例：
 
 ```php
 namespace App\Models;

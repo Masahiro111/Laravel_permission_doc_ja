@@ -35,7 +35,7 @@ $user->removeRole('writer');
 $user->syncRoles(['writer', 'admin']);
 ```
 
-## 役割の確認
+## 役割 (Role) の確認
 
 <!-- You can determine if a user has a certain role: -->
 
