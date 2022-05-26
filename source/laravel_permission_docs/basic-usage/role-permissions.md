@@ -135,7 +135,7 @@ $role->permissions->count();
 
 ## ユーザーへの直接アクセス許可の割り当て
 
-Additionally, individual permissions can be assigned to the user too.
+<!-- Additionally, individual permissions can be assigned to the user too. -->
 <!-- For instance: -->
 
 さらに、個々の権限をユーザーに割り当てることもできます。例えば：
@@ -149,18 +149,19 @@ $user->assignRole('writer');
 $user->givePermissionTo('delete articles');
 ```
 
-In the above example, a role is given permission to edit articles and this role is assigned to a user.
-Now the user can edit articles and additionally delete articles. The permission of 'delete articles' is the user's direct permission because it is assigned directly to them.
+<!-- In the above example, a role is given permission to edit articles and this role is assigned to a user.
+Now the user can edit articles and additionally delete articles.
+The permission of 'delete articles' is the user's direct permission because it is assigned directly to them.
 When we call `$user->hasDirectPermission('delete articles')` it returns `true`,
-but `false` for `$user->hasDirectPermission('edit articles')`.
+but `false` for `$user->hasDirectPermission('edit articles')`. -->
 
-This method is useful if one builds a form for setting permissions for roles and users in an application and wants to restrict or change inherited permissions of roles of the user, i.e. allowing to change only direct permissions of the user.
+<!-- This method is useful if one builds a form for setting permissions for roles and users in an application and wants to restrict or change inherited permissions of roles of the user, i.e. allowing to change only direct permissions of the user. -->
 
-You can check if the user has a Specific or All or Any of a set of permissions directly assigned:
+<!-- You can check if the user has a Specific or All or Any of a set of permissions directly assigned: -->
 
-上記の例では、ロールに記事を編集する権限が与えられ、このロールがユーザーに割り当てられています。これで、ユーザーは記事を編集し、さらに記事を削除できます。「記事の削除」の権限は、ユーザーに直接割り当てられているため、ユーザーの直接の権限です。呼び出す$user->hasDirectPermission('delete articles')と、が返されますtrueがfalse、$user->hasDirectPermission('edit articles')。
+上記の例では、役割(Role) に記事を編集する権限(Permission) が与えられ、この役割(Role) がユーザーに割り当てられています。これで、ユーザーは記事を編集し、さらに記事を削除できます。「delete articles(記事の削除)」の権限は、ユーザーに直接割り当てられているため、ユーザーの直接の権限です。`$user->hasDirectPermission('delete articles')` を呼び出すと `true`が返されます。`$user->hasDirectPermission('edit articles')` を呼び出すと `false` が返されます。
 
-この方法は、アプリケーションで役割とユーザーのアクセス許可を設定するためのフォームを作成し、ユーザーの役割の継承されたアクセス許可を制限または変更する場合、つまりユーザーの直接のアクセス許可のみを変更できるようにする場合に役立ちます。
+この方法は、アプリケーションで役割(Role) とユーザーのパーミッション(Permission) を設定するためのフォームを作成し、ユーザーの役割の継承されたアクセス許可を制限または変更する場合、つまりユーザーの直接のアクセス許可のみを変更できるようにする場合に役立ちます。
 
 ユーザーが直接割り当てられた一連の権限の特定またはすべてまたはいずれかを持っているかどうかを確認できます。
 
@@ -175,14 +176,14 @@ $user->hasAllDirectPermissions(['edit articles', 'delete articles']);
 $user->hasAnyDirectPermission(['create articles', 'delete articles']);
 ```
 
-By following the previous example, when we call `$user->hasAllDirectPermissions(['edit articles', 'delete articles'])`
-it returns `true`, because the user has all these direct permissions.
-When we call
-`$user->hasAnyDirectPermission('edit articles')`, it returns `true` because the user has one of the provided permissions.
+<!-- By following the previous example, when we call `$user->hasAllDirectPermissions(['edit articles', 'delete articles'])` -->
+<!-- it returns `true`, because the user has all these direct permissions. -->
+<!-- When we call -->
+<!-- `$user->hasAnyDirectPermission('edit articles')`, it returns `true` because the user has one of the provided permissions. -->
 
-You can examine all of these permissions:
+<!-- You can examine all of these permissions: -->
 
-前の例に従うと、ユーザーがこれらすべての直接アクセス許可を持っているため、呼び出す$user->hasAllDirectPermissions(['edit articles', 'delete articles']) とが返されます。trueを呼び出すと 、ユーザーが提供された権限の1つを持っているため、$user->hasAnyDirectPermission('edit articles')戻ります。true
+前の例のように、ユーザーがこれらすべての直接アクセス許可を持っているため、`$user->hasAllDirectPermissions(['edit articles', 'delete articles'])` を呼び出すと `true` が返されます。`$user->hasAnyDirectPermission('edit articles')` を呼び出すと 、ユーザーが提供された権限の1つを持っているため、`true` が戻ります。
 
 これらの権限をすべて調べることができます。
 
@@ -197,17 +198,17 @@ $user->getPermissionsViaRoles();
 $user->getAllPermissions();
 ```
 
-All these responses are collections of `Spatie\Permission\Models\Permission` objects.
+<!-- All these responses are collections of `Spatie\Permission\Models\Permission` objects. -->
 
-If we follow the previous example, the first response will be a collection with the `delete article` permission and
-the second will be a collection with the `edit article` permission and the third will contain both.
+<!-- If we follow the previous example, the first response will be a collection with the `delete article` permission and -->
+<!-- the second will be a collection with the `edit article` permission and the third will contain both. -->
 
-これらの応答はすべて、Spatie\Permission\Models\Permissionオブジェクトのコレクションです。
+これらのレスポンスはすべて、`Spatie\Permission\Models\Permission` オブジェクトのコレクションです。
 
-前の例に従うと、最初の応答はdelete article許可のあるコレクションになり、2番目の応答は許可のあるコレクションにedit articleなり、3番目の応答には両方が含まれます。
+前の例のように、最初のレスポンスは `delete article` パーミッションのあるコレクションになり、2番目のレスポンスは `edit article` Permission のあるコレクションに、3番目のレスポンスには両方が含まれます。
 
 ### ポリシーでの権限名の使用に関する注意
 
-When calling `authorize()` for a policy method, if you have a permission named the same as one of those policy methods, your permission "name" will take precedence and not fire the policy. For this reason it may be wise to avoid naming your permissions the same as the methods in your policy. While you can define your own method names, you can read more about the defaults Laravel offers in Laravel's documentation at <https://laravel.com/docs/authorization#writing-policies>
+<!-- When calling `authorize()` for a policy method, if you have a permission named the same as one of those policy methods, your permission "name" will take precedence and not fire the policy. For this reason it may be wise to avoid naming your permissions the same as the methods in your policy. While you can define your own method names, you can read more about the defaults Laravel offers in Laravel's documentation at <https://laravel.com/docs/authorization#writing-policies> -->
 
-ポリシーメソッドを呼び出すときauthorize()に、それらのポリシーメソッドの1つと同じ名前のアクセス許可がある場合、アクセス許可の「名前」が優先され、ポリシーは実行されません。このため、ポリシーのメソッドと同じように権限に名前を付けることは避けるのが賢明かもしれません。独自のメソッド名を定義することもできますが、Laravelが提供するデフォルトの詳細については、Laravelのドキュメント（<https://laravel.com/docs/authorization#writing-policies>）を参照してください。
+ポリシーメソッドの `authorize()` を呼び出すときに、それらのポリシーメソッドの1つと同じ名前のアクセス許可がある場合、アクセス許可の「名前」が優先され、ポリシーは実行されません。このため、ポリシーのメソッドと同じように権限に名前を付けることは避けるのが賢明かもしれません。独自のメソッド名を定義することもできますが、Laravelが提供するデフォルトの詳細については、[Laravelのドキュメント](https://laravel.com/docs/authorization#writing-policies) を参照してください。
