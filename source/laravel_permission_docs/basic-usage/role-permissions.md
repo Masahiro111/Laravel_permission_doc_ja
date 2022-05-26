@@ -3,11 +3,11 @@ title: ロールを介した権限の使用
 weight: 3
 ---
 
-## 役割の割り当て
+## 役割 (Role) の割り当て
 
 <!-- A role can be assigned to any user: -->
 
-役割(Role) は任意のユーザーに割り当てることができます。
+役割 (Role) は任意のユーザーに割り当てることができます。
 
 ```php
 $user->assignRole('writer');
@@ -18,9 +18,9 @@ $user->assignRole('writer', 'admin');
 $user->assignRole(['writer', 'admin']);
 ```
 
-A role can be removed from a user:
+<!-- A role can be removed from a user: -->
 
-役割(Role) はユーザーから削除できます。
+役割 (Role) はユーザーから削除できます。
 
 ```php
 $user->removeRole('writer');
@@ -39,7 +39,7 @@ $user->syncRoles(['writer', 'admin']);
 
 <!-- You can determine if a user has a certain role: -->
 
-ユーザーが特定の役割を持っているかどうかを判断できます。
+ユーザーが特定の役割 (Role) を持っているかどうかを判断できます。
 
 ```php
 $user->hasRole('writer');
@@ -50,7 +50,7 @@ $user->hasRole(['editor', 'moderator']);
 
 <!-- You can also determine if a user has any of a given list of roles: -->
 
-また、ユーザーが特定の役割(Role) のリストのいずれかを持っているかどうかを判断することもできます。
+また、ユーザーが特定の役割 (Role) のリストのいずれかを持っているかどうかを判断することもできます。
 
 ```php
 $user->hasAnyRole(['writer', 'reader']);
@@ -74,16 +74,16 @@ $user->hasAllRoles(Role::all());
 $user->hasExactRoles(Role::all());
 ```
 
-The `assignRole`, `hasRole`, `hasAnyRole`, `hasAllRoles`, `hasExactRoles`  and `removeRole` functions can accept a
- string, a `\Spatie\Permission\Models\Role` object or an `\Illuminate\Support\Collection` object.
+<!-- The `assignRole`, `hasRole`, `hasAnyRole`, `hasAllRoles`, `hasExactRoles`  and `removeRole` functions can accept a
+ string, a `\Spatie\Permission\Models\Role` object or an `\Illuminate\Support\Collection` object. -->
 
 `assignRole`, `hasRole`, `hasAnyRole`, `hasAllRoles`, `hasExactRoles`  及び `removeRole` メソッド関数は、文字列、`\Spatie\Permission\Models\Role`  `\Illuminate\Support\Collection` を受け入れることができます。
 
-## ロールへの権限の割り当て
+## 役割 (Role) への権限 (Permission) の割り当て
 
 <!-- A permission can be given to a role: -->
 
-役割に許可を与えることができます。
+役割 (Role) に許可 (Permission) を与えることができます。
 
 ```php
 $role->givePermissionTo('edit articles');
@@ -91,7 +91,7 @@ $role->givePermissionTo('edit articles');
 
 <!-- You can determine if a role has a certain permission: -->
 
-ロールに特定の権限があるかどうかを判断できます。
+役割 (Role) に特定の権限 (Permission) があるかどうかを判断できます。
 
 ```php
 $role->hasPermissionTo('edit articles');
@@ -99,7 +99,7 @@ $role->hasPermissionTo('edit articles');
 
 <!-- A permission can be revoked from a role: -->
 
-権限はロールから取り消すことができます。
+権限 (Permission) は 役割 (Role) から取り消すことができます。
 
 ```php
 $role->revokePermissionTo('edit articles');
@@ -118,7 +118,7 @@ string or a `Spatie\Permission\Models\Permission` object. -->
 
 <!-- The `permissions` property on any given role returns a collection with all the related permission objects. This collection can respond to usual Eloquent Collection operations, such as count, sort, etc. -->
 
-複数の役割(Role)が与えられている `permissions` プロパティは、関連するすべての Permission オブジェクトを含むコレクションを返します。このコレクションは、カウント、ソートなどの通常の `Eloquent Collection` 操作に応答できます。
+複数の役割 (Role) が与えられている `permissions` プロパティは、関連するすべての Permission オブジェクトを含むコレクションを返します。このコレクションは、カウント、ソートなどの通常の `Eloquent Collection` 操作に応答できます。
 
 ```php
 // get collection
@@ -138,7 +138,7 @@ $role->permissions->count();
 <!-- Additionally, individual permissions can be assigned to the user too. -->
 <!-- For instance: -->
 
-さらに、個々の権限をユーザーに割り当てることもできます。例えば：
+さらに、個々の権限 (Permission) をユーザーに割り当てることもできます。例えば：
 
 ```php
 $role = Role::findByName('writer');
@@ -159,9 +159,9 @@ but `false` for `$user->hasDirectPermission('edit articles')`. -->
 
 <!-- You can check if the user has a Specific or All or Any of a set of permissions directly assigned: -->
 
-上記の例では、役割(Role) に記事を編集する権限(Permission) が与えられ、この役割(Role) がユーザーに割り当てられています。これで、ユーザーは記事を編集し、さらに記事を削除できます。「delete articles(記事の削除)」の権限は、ユーザーに直接割り当てられているため、ユーザーの直接の権限です。`$user->hasDirectPermission('delete articles')` を呼び出すと `true`が返されます。`$user->hasDirectPermission('edit articles')` を呼び出すと `false` が返されます。
+上記の例では、役割 (Role) に記事を編集する権限 (Permission) が与えられ、この役割 (Role) がユーザーに割り当てられています。これで、ユーザーは記事を編集し、さらに記事を削除できます。「delete articles (記事の削除) 」の権限は、ユーザーに直接割り当てられているため、ユーザーの直接の権限です。`$user->hasDirectPermission('delete articles')` を呼び出すと `true`が返されます。`$user->hasDirectPermission('edit articles')` を呼び出すと `false` が返されます。
 
-この方法は、アプリケーションで役割(Role) とユーザーのパーミッション(Permission) を設定するためのフォームを作成し、ユーザーの役割の継承されたアクセス許可を制限または変更する場合、つまりユーザーの直接のアクセス許可のみを変更できるようにする場合に役立ちます。
+この方法は、アプリケーションで役割 (Role) とユーザーのパーミッション (Permission) を設定するためのフォームを作成し、ユーザーの役割の継承されたアクセス許可を制限または変更する場合、つまりユーザーの直接のアクセス許可のみを変更できるようにする場合に役立ちます。
 
 ユーザーが直接割り当てられた一連の権限の特定またはすべてまたはいずれかを持っているかどうかを確認できます。
 
