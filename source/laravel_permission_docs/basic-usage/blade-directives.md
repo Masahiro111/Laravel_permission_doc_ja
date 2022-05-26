@@ -4,7 +4,8 @@ weight: 4
 ---
 
 ## Permissions
-This package doesn't add any **permission**-specific Blade directives. 
+
+This package doesn't add any **permission**-specific Blade directives.
 Instead, use Laravel's native `@can` directive to check if a user has a certain permission.
 
 ```php
@@ -12,7 +13,9 @@ Instead, use Laravel's native `@can` directive to check if a user has a certain 
   //
 @endcan
 ```
+
 or
+
 ```php
 @if(auth()->user()->can('edit articles') && $some_other_condition)
   //
@@ -21,18 +24,20 @@ or
 
 You can use `@can`, `@cannot`, `@canany`, and `@guest` to test for permission-related access.
 
+## Roles
 
-## Roles 
 As discussed in the Best Practices section of the docs, **it is strongly recommended to always use permission directives**, instead of role directives.
 
 Additionally, if your reason for testing against Roles is for a Super-Admin, see the *Defining A Super-Admin* section of the docs.
 
-If you actually need to test for Roles, this package offers some Blade directives to verify whether the currently logged in user has all or any of a given list of roles. 
+If you actually need to test for Roles, this package offers some Blade directives to verify whether the currently logged in user has all or any of a given list of roles.
 
 Optionally you can pass in the `guard` that the check will be performed on as a second argument.
 
 #### Blade and Roles
+
 Check for a specific role:
+
 ```php
 @role('writer')
     I am a writer!
@@ -40,7 +45,9 @@ Check for a specific role:
     I am not a writer...
 @endrole
 ```
+
 is the same as
+
 ```php
 @hasrole('writer')
     I am a writer!
@@ -50,6 +57,7 @@ is the same as
 ```
 
 Check for any role in a list:
+
 ```php
 @hasanyrole($collectionOfRoles)
     I have one or more of these roles!
@@ -63,6 +71,7 @@ Check for any role in a list:
     I have none of these roles...
 @endhasanyrole
 ```
+
 Check for all roles:
 
 ```php
