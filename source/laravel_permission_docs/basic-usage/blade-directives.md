@@ -24,35 +24,33 @@ weight: 4
 @endif
 ```
 
-You can use `@can`, `@cannot`, `@canany`, and `@guest` to test for permission-related access.
+<!-- You can use `@can`, `@cannot`, `@canany`, and `@guest` to test for permission-related access. -->
 
 `@can`, `@cannot`, `@canany` 及び `@guest` ディレクティブを使用して、権限 (Permission) 関連のアクセスをテストできます。
 
 ## 役割 (Roles)
 
-As discussed in the Best Practices section of the docs, **it is strongly recommended to always use permission directives**, instead of role directives.
+<!-- As discussed in the Best Practices section of the docs, **it is strongly recommended to always use permission directives**, instead of role directives. -->
 
-Additionally, if your reason for testing against Roles is for a Super-Admin, see the *Defining A Super-Admin* section of the docs.
+<!-- Additionally, if your reason for testing against Roles is for a Super-Admin, see the *Defining A Super-Admin* section of the docs. -->
 
-If you actually need to test for Roles, this package offers some Blade directives to verify whether the currently logged in user has all or any of a given list of roles.
+<!-- If you actually need to test for Roles, this package offers some Blade directives to verify whether the currently logged in user has all or any of a given list of roles. -->
 
-Optionally you can pass in the `guard` that the check will be performed on as a second argument.
+<!-- Optionally you can pass in the `guard` that the check will be performed on as a second argument. -->
 
-ドキュメントのベストプラクティスのセクションで説明されているように、ロールディレクティブではなく、常にパーミッションディレクティブを使用することを強くお勧めします。
+ドキュメントのベストプラクティスのセクションで説明されているように、**ロールディレクティブではなく、常にパーミッションディレクティブ用すること** を強くお勧めします。
 
-さらに、ロールに対してテストする理由がスーパー管理者向けである場合は、ドキュメントの「スーパー管理者の定義」セクションを参照してください。
+さらに、役割 (Role) に対してテストする理由がスーパー管理者向けである場合は、ドキュメントの 「スーパー管理者の定義 」 セクションを参照してください。
 
-実際に役割をテストする必要がある場合、このパッケージは、現在ログインしているユーザーが特定の役割のリストのすべてまたはいずれかを持っているかどうかを確認するためのいくつかのBladeディレクティブを提供します。
+実際に役割 (Role) をテストする必要がある場合、このパッケージは、現在ログインしているユーザーが特定の役割 (Role) のリストのすべてまたはいずれかを持っているかどうかを確認するためのいくつかの Blade ディレクティブを用意しています。
 
-オプションguardで、チェックが実行されることを2番目の引数として渡すことができます。
-
-＃＃ブレードと役割
+オプションとして、 guard でチェックが実行されることを2番目の引数として渡すことができます。
 
 #### ブレードと役割 (Roles)
 
-Check for a specific role:
+<!-- Check for a specific role: -->
 
-特定の役割を確認します。
+特定の役割 (Role) を確認します。
 
 ```php
 @role('writer')
@@ -62,7 +60,7 @@ Check for a specific role:
 @endrole
 ```
 
-is the same as
+<!-- is the same as -->
 
 と同じです
 
@@ -74,9 +72,9 @@ is the same as
 @endhasrole
 ```
 
-Check for any role in a list:
+<!-- Check for any role in a list: -->
 
-リスト内の役割を確認します。
+リスト内の役割 (Role) を確認します。
 
 ```php
 @hasanyrole($collectionOfRoles)
@@ -92,7 +90,7 @@ Check for any role in a list:
 @endhasanyrole
 ```
 
-Check for all roles:
+<!-- Check for all roles: -->
 
 すべての役割を確認します。
 
@@ -110,9 +108,9 @@ Check for all roles:
 @endhasallroles
 ```
 
-Alternatively, `@unlessrole` gives the reverse for checking a singular role, like this:
+<!-- Alternatively, `@unlessrole` gives the reverse for checking a singular role, like this: -->
 
-または、@unlessrole次のように、単一の役割をチェックするための逆を行います。
+`@unlessrole` は単一の役割 (Role) が「偽」になるかをチェックします。
 
 ```php
 @unlessrole('does not have this role')
@@ -122,9 +120,9 @@ Alternatively, `@unlessrole` gives the reverse for checking a singular role, lik
 @endunlessrole
 ```
 
-You can also determine if a user has exactly all of a given list of roles:
+<!-- You can also determine if a user has exactly all of a given list of roles: -->
 
-また、ユーザーが特定の役割のリストをすべて正確に持っているかどうかを判断することもできます。
+また、ユーザーが特定の役割 (Role) のリストをすべて正確に持っているかどうかを判断することもできます。
 
 ```php
 @hasexactroles('writer|admin')
