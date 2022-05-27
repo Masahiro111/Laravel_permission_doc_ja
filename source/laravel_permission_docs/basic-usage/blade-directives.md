@@ -5,10 +5,10 @@ weight: 4
 
 ## 権限 (Permissions)
 
-This package doesn't add any **permission**-specific Blade directives.
-Instead, use Laravel's native `@can` directive to check if a user has a certain permission.
+<!-- This package doesn't add any **permission**-specific Blade directives. -->
+<!-- Instead, use Laravel's native `@can` directive to check if a user has a certain permission. -->
 
-このパッケージは、パーミッション固有のBladeディレクティブを追加しません。代わりに、Laravelのネイティブ@canディレクティブを使用して、ユーザーが特定の権限を持っているかどうかを確認してください。
+このパッケージは、パーミッション固有の Blade ディレクティブを追加しません。代わりに、Laravelのネイティブ `@can` ディレクティブを使用して、ユーザーが特定の権限 (Permission) を持っているかどうかを確認してください。
 
 ```php
 @can('edit articles')
@@ -26,7 +26,7 @@ Instead, use Laravel's native `@can` directive to check if a user has a certain 
 
 You can use `@can`, `@cannot`, `@canany`, and `@guest` to test for permission-related access.
 
-、、、を使用@canして、権限関連のアクセスをテストできます。@cannot@canany@guest
+`@can`, `@cannot`, `@canany` 及び `@guest` ディレクティブを使用して、権限 (Permission) 関連のアクセスをテストできます。
 
 ## 役割 (Roles)
 
