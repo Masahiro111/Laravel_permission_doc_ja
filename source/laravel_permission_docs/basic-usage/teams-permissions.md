@@ -3,15 +3,15 @@ title: チームの権限
 weight: 3
 ---
 
-NOTE: Those changes must be made before performing the migration. If you have already run the migration and want to upgrade your solution, you can run the artisan console command `php artisan permission:setup-teams`, to create a new migration file named [xxxx_xx_xx_xx_add_teams_fields.php](https://github.com/spatie/laravel-permission/blob/main/database/migrations/add_teams_fields.php.stub) and then run `php artisan migrate` to upgrade your database tables.
+<!-- NOTE: Those changes must be made before performing the migration. If you have already run the migration and want to upgrade your solution, you can run the artisan console command `php artisan permission:setup-teams`, to create a new migration file named [xxxx_xx_xx_xx_add_teams_fields.php](https://github.com/spatie/laravel-permission/blob/main/database/migrations/add_teams_fields.php.stub) and then run `php artisan migrate` to upgrade your database tables. -->
 
-When enabled, teams permissions offers you a flexible control for a variety of scenarios. The idea behind teams permissions is inspired by the default permission implementation of [Laratrust](https://laratrust.santigarcor.me/).
+<!-- When enabled, teams permissions offers you a flexible control for a variety of scenarios. The idea behind teams permissions is inspired by the default permission implementation of [Laratrust](https://laratrust.santigarcor.me/). -->
 
-Teams permissions can be enabled in the permission config file:
+<!-- Teams permissions can be enabled in the permission config file: -->
 
-注：これらの変更は、移行を実行する前に行う必要があります。すでに移行を実行していて、ソリューションをアップグレードする場合は、artisan consoleコマンドを実行して、 xxx​​x_xx_xx_xx_add_teams_fields.phpphp artisan permission:setup-teamsという名前の新しい移行ファイルを作成してから、実行してデータベーステーブルをアップグレードできます。php artisan migrate
+> 注：これらの変更は、マイグレーションを実行する前に行う必要があります。すでにマイグレーションを実行していて、ソリューションをアップグレードする場合は、artisan console コマンド `php artisan permission:setup-teams` を実行して、 xxx​​x_xx_xx_xx_add_teams_fields.php という名前の新しい移行ファイルを作成してから、php artisan migrate を実行してデータベーステーブルをアップグレードできます。
 
-有効にすると、チームの権限により、さまざまなシナリオを柔軟に制御できます。チームのアクセス許可の背後にある考え方は、 Laratrustのデフォルトのアクセス許可の実装に触発されています。
+有効にすると、チームの権限により、さまざまなシナリオを柔軟に制御できます。チームのアクセス許可の背後にある考え方は、 [Laratrust](https://laratrust.santigarcor.me/) のデフォルトのアクセス許可の実装に触発されています。
 
 チームの権限は、権限設定ファイルで有効にできます。
 
@@ -20,7 +20,7 @@ Teams permissions can be enabled in the permission config file:
 'teams' => true,
 ```
 
-Also, if you want to use a custom foreign key for teams you must change in the permission config file:
+<!-- Also, if you want to use a custom foreign key for teams you must change in the permission config file: -->
 
 また、チームにカスタム外部キーを使用する場合は、権限構成ファイルを変更する必要があります。
 
@@ -86,9 +86,9 @@ The role/permission assignment and removal are the same, but they take the globa
 
 ## チームでのスーパー管理者の定義
 
-Global roles can be assigned to different teams, `team_id` as the primary key of the relationships is always required. If you want a "Super Admin" global role for a user, when you creates a new team you must assign it to your user. Example:
+<!-- Global roles can be assigned to different teams, `team_id` as the primary key of the relationships is always required. If you want a "Super Admin" global role for a user, when you creates a new team you must assign it to your user. Example: -->
 
-team_id関係の主キーは常に必要であるため、グローバルな役割をさまざまなチームに割り当てることができます。ユーザーに「スーパー管理者」グローバルロールが必要な場合は、新しいチームを作成するときに、それをユーザーに割り当てる必要があります。例：
+リレーションの主キーである `team_id` を常に必要とすることで、グローバルな役割をさまざまなチームに割り当てることができます。ユーザーに「スーパー管理者」グローバルロールが必要な場合は、新しいチームを作成するときに、それをユーザーに割り当てる必要があります。例：
 
 ```php
 namespace App\Models;
