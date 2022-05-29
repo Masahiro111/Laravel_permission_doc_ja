@@ -31,10 +31,9 @@ weight: 3
 
 ## チームのアクセス許可の操作
 
-After implements on login a solution for select a team on authentication (for example set `team_id` of the current selected team on **session**: `session(['team_id' => $team->team_id]);` ),
-we can set global `team_id` from anywhere, but works better if you create a `Middleware`, example:
+<!-- After implements on login a solution for select a team on authentication (for example set `team_id` of the current selected team on **session**: `session(['team_id' => $team->team_id]);` ),we can set global `team_id` from anywhere, but works better if you create a `Middleware`, example: -->
 
-ログイン時に認証でチームを選択するためのソリューション（たとえば、セッションteam_idで現在選択されているチームのセット:)を実装した後、どこからでもグローバルに設定できますが、次の例を作成すると、より適切に機能します。session(['team_id' => $team->team_id]);team_idMiddleware
+ログイン時に認証でチームを選択するためのソリューション（ たとえば、セッション `session(['team_id' => $team->team_id]);`で 現在選択されているチームの `team_id` をセットする  )を実装した後、グローバルな `team_id` はどこでも設定できますが、より適切に機能するには、以下のようにミドルウェアを作成するケースがあります。
 
 ```php
 namespace App\Http\Middleware;
