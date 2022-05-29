@@ -56,15 +56,15 @@ class TeamsPermission{
 }
 ```
 
-NOTE: You must add your custom `Middleware` to `$middlewarePriority` on `app/Http/Kernel.php`.
+<!-- NOTE: You must add your custom `Middleware` to `$middlewarePriority` on `app/Http/Kernel.php`. -->
 
-Middleware注：カスタムを$middlewarePriorityに追加する必要がありますapp/Http/Kernel.php。
+注：カスタムミドルウェアを `app/Http/Kernel.php` の `$middlewarePriority` に追加する必要があります。
 
 ## 役割 (Role) の作成
 
-When creating a role you can pass the `team_id` as an optional parameter
+<!-- When creating a role you can pass the `team_id` as an optional parameter -->
 
-team_idロールを作成するときに、オプションのパラメーターとしてを渡すことができます
+ロールを作成するときに、オプションのパラメーターとして `team_id` を渡すことができます
 
 ```php
 // with null team_id it creates a global role, global roles can be assigned to any team and they are unique
@@ -79,9 +79,9 @@ Role::create(['name' => 'reviewer']);
 
 ## 役割/権限の割り当てと削除
 
-The role/permission assignment and removal are the same, but they take the global `team_id` set on login for sync.
+<!-- The role/permission assignment and removal are the same, but they take the global `team_id` set on login for sync. -->
 
-役割/権限の割り当てと削除は同じですが、team_id同期のためにログイン時にグローバルセットを使用します。
+役割/権限の割り当てと削除は同じものですが、同期のためには、ログイン時にグローバルな `team_id` を使用してください。
 
 ## チームでのスーパー管理者の定義
 
