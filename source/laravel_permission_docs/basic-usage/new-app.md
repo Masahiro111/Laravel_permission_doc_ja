@@ -129,15 +129,15 @@ php artisan migrate:fresh --seed --seeder=PermissionsDemoSeeder
 
 ### スーパー管理者アクセスの許可
 
-Super-Admins are a common feature. The following approach allows that when your Super-Admin user is logged in, all permission-checks in your app which call `can()` or `@can()` will return true.
+<!-- Super-Admins are a common feature. The following approach allows that when your Super-Admin user is logged in, all permission-checks in your app which call `can()` or `@can()` will return true. -->
 
-- Create a role named `Super-Admin`. (Or whatever name you wish; but use it consistently just like you must with any role name.)
-- Add a Gate::before check in your `AuthServiceProvider`:
+<!-- - Create a role named `Super-Admin`. (Or whatever name you wish; but use it consistently just like you must with any role name.) -->
+<!-- - Add a Gate::before check in your `AuthServiceProvider`: -->
 
-スーパー管理者は一般的な機能です。次のアプローチでは、Super-Adminユーザーがログインしているときに、すべての権限をチェックして、呼び出したcan()、または@can()trueを返すアプリをチェックします。
+スーパー管理者は一般的な機能です。次のアプローチでは、スーパー管理者がログインしているときに、`can()`、または `@can()` は、すべての権限チェックに `true` を返します。
 
-。という名前のロールを作成しますSuper-Admin。（または任意の名前。ただし、他のロール名と同じように一貫して使用してください。）
-チェックインする前にGate::を追加してくださいAuthServiceProvider
+- `Super-Admin` という名前の役割 (Role) を作成します。（または任意の名前でもOK。ただし、他のロール名と同じように一貫して使用してください。）
+- `AuthServiceProvider` に`Gate::before` を追加してください
 
 ```diff
     public function boot()
@@ -157,29 +157,29 @@ Super-Admins are a common feature. The following approach allows that when your 
 
 ### アプリケーションコード
 
-The permissions created in the seeder above imply that there will be some sort of Posts or Article features, and that various users will have various access control levels to manage/view those objects.
+<!-- The permissions created in the seeder above imply that there will be some sort of Posts or Article features, and that various users will have various access control levels to manage/view those objects. -->
 
-Your app will have Models, Controllers, routes, Views, Factories, Policies, Tests, middleware, and maybe additional Seeders.
+<!-- Your app will have Models, Controllers, routes, Views, Factories, Policies, Tests, middleware, and maybe additional Seeders. -->
 
-You can see examples of these in the demo app at <https://github.com/drbyte/spatie-permissions-demo/>
+<!-- You can see examples of these in the demo app at <https://github.com/drbyte/spatie-permissions-demo/> -->
 
 上記のシーダーで作成された権限は、ある種の投稿または記事の機能があり、さまざまなユーザーがそれらのオブジェクトを管理/表示するためのさまざまなアクセス制御レベルを持っていることを意味します。
 
 アプリには、モデル、コントローラー、ルート、ビュー、ファクトリー、ポリシー、テスト、ミドルウェア、および場合によっては追加のシーダーが含まれます。
 
-これらの例は、https：//github.com/drbyte/spatie-permissions-demo/のデモアプリで確認できます。
+これらの例は、<https://github.com/drbyte/spatie-permissions-demo/> のデモアプリで確認できます。
 
 ## 共有
 
-To share your app on Github for easy collaboration:
+<!-- To share your app on Github for easy collaboration: -->
 
-- create a new public repository on Github, without any extras like readme/etc.
-- follow github's sample code for linking your local repo and uploading the code. It will look like this:
+<!-- - create a new public repository on Github, without any extras like readme/etc. -->
+<!-- - follow github's sample code for linking your local repo and uploading the code. It will look like this: -->
 
 簡単なコラボレーションのためにGithubでアプリを共有するには：
 
-readme / etcのような追加機能なしで、Githubに新しいパブリックリポジトリを作成します。
-ローカルリポジトリをリンクしてコードをアップロードするには、githubのサンプルコードに従ってください。次のようになります。
+- `readme / etc`のような追加機能なしで、Github に新しいパブリックリポジトリを作成します。
+- ローカルリポジトリをリンクしてコードをアップロードするには、github のサンプルコードに従ってください。次のようになります。
 
 ```sh
 git remote add origin git@github.com:YOURUSERNAME/REPONAME.git
