@@ -205,5 +205,3 @@ git push origin main
 <!-- Those are the basics! -->
 
 共有するコードを変更するたびに、上記のプロセスを繰り返します。
-
-以上が基本です！
